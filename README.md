@@ -30,8 +30,8 @@ The booking form is a front-end demonstration only. It does not send an email, s
 | Recognition over recall | Session prefilled from the card you clicked |
 | Fitts's law | 44–48px minimum targets, large primary actions |
 | Hick's law | 3 session choices, grouped navigation, 4 booking fields |
-| Accessibility | Skip link, labels, ARIA live regions, visible focus, reduced motion, contrast and `backdrop-filter` fallbacks |
-| Aesthetic and minimal design | One accent colour, glass used for surfaces only |
+| Accessibility | Skip link, labels, ARIA live regions, visible focus, reduced motion, and high-contrast support |
+| Aesthetic and minimal design | Consistent solid surfaces, clear borders and a restrained accent palette |
 
 ## Deploy to GitHub Pages
 

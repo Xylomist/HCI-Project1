@@ -29,7 +29,7 @@
   <h1 style="font-size:clamp(2rem,5vw,3.2rem)">Book a session</h1>
   <p class="muted">Four fields. Free cancellation up to 12 hours before.</p>
   <p class="muted booking-note">Your booking is a demo interaction; no payment is taken and no email is sent. <a href="first-visit.html">Questions before you book?</a></p>
-  <div class="glass" style="margin-top:1.5rem;max-width:680px">
+  <div class="surface" style="margin-top:1.5rem;max-width:680px">
     <form id="booking" novalidate>
       <div class="field"><label for="name">Full name</label><input id="name" autocomplete="name" aria-describedby="e-name"><span class="error" id="e-name" aria-live="polite"></span></div>
       <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" placeholder="name@example.com" aria-describedby="h-email e-email"><span class="hint" id="h-email">We only use this to send your confirmation.</span><span class="error" id="e-email" aria-live="polite"></span></div>
@@ -38,10 +38,10 @@
       <div class="field"><label for="date">Date</label><input id="date" type="date"><span class="error" aria-live="polite"></span></div>
       <div class="field"><span id="g-label" style="font-weight:600">Guests (max 6)</span>
         <div class="stepper"><button type="button" class="btn" data-step="-1" aria-label="Remove a guest">−</button><output id="guests-out" aria-labelledby="g-label">1</output><button type="button" class="btn" data-step="1" aria-label="Add a guest">+</button><input id="guests" type="hidden" value="1"></div></div>
-      <p class="glass summary" id="sum" role="status" aria-live="polite" style="padding:1rem"></p>
+      <p class="surface summary" id="sum" role="status" aria-live="polite" style="padding:1rem"></p>
       <div class="actions"><button class="btn primary" type="submit">Confirm booking</button><button class="btn" type="reset" onclick="setTimeout(()=>location.reload())">Clear form</button></div>
     </form>
-    <div id="confirm" class="hidden glass success" tabindex="-1" style="box-shadow:none"></div>
+    <div id="confirm" class="hidden surface success" tabindex="-1" style="box-shadow:none"></div>
   </div>
 </section>
 </main>
