@@ -132,4 +132,15 @@ footer{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.95rem}
   .story{grid-template-columns:1fr}
   .note-panel,.end-cta{align-items:flex-start;flex-direction:column}
 }
+@media (max-width:600px){
+  :root{
+    --glass:rgba(15,55,73,.94);
+    --glass-strong:rgba(34,84,102,.96);
+    --edge:rgba(255,255,255,.38);
+    --muted:#c8dce2;
+  }
+  body{background-attachment:scroll}
+  body::before,body::after{display:none}
+  .glass,.nav{-webkit-backdrop-filter:none;backdrop-filter:none}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
