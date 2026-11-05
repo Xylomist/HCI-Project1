@@ -1,0 +1,107 @@
+/* Harbor & Haze — glassmorphic UI. Design tokens first (consistency). */
+:root{
+  --fjord:#0b2a3a; --deep:#06161f; --glacier:#7fd6e6; --ember:#ff8a5b; --mist:#e9f6f9;
+  --glass:rgba(255,255,255,.10); --glass-strong:rgba(255,255,255,.16); --edge:rgba(255,255,255,.28);
+  --text:#f2fafc; --muted:#b9d3db; --err:#ffb4a2; --ok:#9be7c4;
+  --r:20px; --gap:clamp(1rem,2.5vw,1.75rem);
+  --head:"Bricolage Grotesque",system-ui,sans-serif; --body:"Figtree",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:1.0625rem/1.65 var(--body);color:var(--text);min-height:100vh;display:flex;flex-direction:column;
+  background:linear-gradient(160deg,var(--deep),var(--fjord) 55%,#0f4157) fixed;position:relative;overflow-x:hidden}
+/* Decorative orbs give the glass something to blur */
+body::before,body::after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(70px)}
+body::before{width:46vmax;height:46vmax;background:var(--glacier);top:-18vmax;right:-12vmax;opacity:.35}
+body::after{width:38vmax;height:38vmax;background:var(--ember);bottom:-16vmax;left:-12vmax;opacity:.30}
+h1,h2,h3{font-family:var(--head);line-height:1.15;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,6vw,4.4rem);max-width:16ch}
+h2{font-size:clamp(1.6rem,3.5vw,2.3rem);margin-bottom:.6rem}
+h3{font-size:1.25rem}
+p{max-width:62ch}
+a{color:var(--glacier)}
+.muted{color:var(--muted)}
+main{flex:1;width:min(1100px,92%);margin:0 auto;padding:2rem 0 4rem}
+section{margin-top:clamp(2.5rem,6vw,4.5rem)}
+
+/* Accessibility */
+.skip{position:absolute;left:-999px;top:.5rem;background:var(--mist);color:var(--deep);padding:.6rem 1rem;border-radius:10px;z-index:99}
+.skip:focus{left:.5rem}
+:focus-visible{outline:3px solid var(--ember);outline-offset:3px;border-radius:8px}
+
+/* Glass surface */
+.glass{background:var(--glass);border:1px solid var(--edge);border-radius:var(--r);
+  box-shadow:0 8px 32px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.25);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);padding:var(--gap)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .glass,.nav{background:rgba(14,52,72,.92)}}
+@media (prefers-contrast:more){.glass{background:rgba(6,22,31,.95)}}
+
+/* Navigation: same place on every page (consistency) */
+.nav{position:sticky;top:.75rem;z-index:50;width:min(1100px,92%);margin:.75rem auto 0;display:flex;align-items:center;
+  justify-content:space-between;gap:1rem;padding:.6rem 1rem;border-radius:999px;background:var(--glass-strong);
+  border:1px solid var(--edge);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.brand{font:700 1.2rem var(--head);color:var(--text);text-decoration:none}
+.nav ul{list-style:none;display:flex;gap:.25rem;padding:0}
+.nav a.link{display:block;padding:.6rem 1.1rem;border-radius:999px;color:var(--text);text-decoration:none;min-height:44px}
+.nav a.link:hover{background:var(--glass)}
+.nav a[aria-current="page"]{background:var(--mist);color:var(--deep);font-weight:600}
+.menu-btn{display:none}
+
+/* Buttons: min 44px targets (Fitts's law) */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.7rem 1.6rem;border-radius:999px;
+  border:1px solid var(--edge);font:600 1rem var(--body);cursor:pointer;text-decoration:none;color:var(--text);background:var(--glass-strong);
+  transition:transform .15s,background .15s}
+.btn:hover{background:rgba(255,255,255,.26)} .btn:active{transform:scale(.97)}
+.btn.primary{background:var(--ember);color:#2a0e03;border-color:transparent}
+.btn.primary:hover{background:#ff9d76}
+.btn[aria-pressed="true"]{background:var(--mist);color:var(--deep)}
+
+/* Layout */
+.hero{display:grid;gap:1.5rem;padding-top:clamp(1.5rem,5vw,4rem)}
+.hero p{font-size:1.2rem;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.grid{display:grid;gap:var(--gap);grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{display:flex;flex-direction:column;gap:.6rem}
+.card .meta{color:var(--muted);font-size:.95rem}
+.card .btn{margin-top:auto;align-self:flex-start}
+.price{font:700 1.5rem var(--head);color:var(--glacier)}
+.status{display:inline-flex;align-items:center;gap:.55rem;padding:.4rem 1rem;border-radius:999px;width:fit-content;font-weight:600}
+.status::before{content:"";width:.7rem;height:.7rem;border-radius:50%;background:var(--muted)}
+.status.open::before{background:var(--ok)} .status.closed::before{background:var(--err)}
+.filters{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0}
+.hidden{display:none!important}
+
+/* Forms: labels, hints, inline errors (error prevention + recovery) */
+form{display:grid;gap:1.2rem;max-width:620px}
+.field{display:grid;gap:.35rem}
+label{font-weight:600}
+.hint{font-size:.92rem;color:var(--muted)}
+input,select{font:inherit;color:var(--text);min-height:48px;padding:.6rem 1rem;border-radius:14px;border:1px solid var(--edge);background:rgba(6,22,31,.55)}
+select option{color:#06161f}
+input::placeholder{color:#8fb0ba}
+.field.invalid input,.field.invalid select{border-color:var(--err)}
+.error{color:var(--err);font-size:.95rem;min-height:1.2em}
+.stepper{display:flex;align-items:center;gap:.75rem}
+.stepper output{min-width:2ch;text-align:center;font:700 1.3rem var(--head)}
+.stepper .btn{width:48px;padding:0}
+.summary{border-left:4px solid var(--glacier)}
+.success{border-color:var(--ok)}
+details{padding:1rem 1.25rem} summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+details+details{margin-top:.75rem}
+table{border-collapse:collapse;width:100%} td,th{padding:.6rem 0;text-align:left;border-bottom:1px solid var(--edge)}
+
+/* Toast: feedback for actions */
+.toast{position:fixed;left:50%;bottom:1.5rem;transform:translate(-50%,150%);padding:.8rem 1.4rem;border-radius:999px;
+  background:var(--mist);color:var(--deep);font-weight:600;transition:transform .3s;z-index:90}
+.toast.show{transform:translate(-50%,0)}
+
+footer{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.95rem}
+
+@media (max-width:720px){
+  .menu-btn{display:inline-flex}
+  .nav ul{position:absolute;top:calc(100% + .5rem);left:0;right:0;flex-direction:column;padding:.75rem;border-radius:var(--r);
+    background:rgba(11,42,58,.96);border:1px solid var(--edge);display:none}
+  .nav ul.open{display:flex}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}

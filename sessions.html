@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sessions · Harbor &amp; Haze</title>
+<meta name="description" content="Compare and filter sauna and cold plunge sessions.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <a class="brand" href="index.html">Harbor &amp; Haze</a>
+  <button class="btn menu-btn" aria-expanded="false" aria-controls="nav-list">Menu</button>
+  <nav aria-label="Main"><ul id="nav-list">
+    <li><a class="link" href="index.html">Home</a></li>
+    <li><a class="link" href="sessions.html" aria-current="page">Sessions</a></li>
+    <li><a class="link" href="book.html">Book</a></li>
+    <li><a class="link" href="visit.html">Visit</a></li>
+  </ul></nav>
+</header>
+<main id="main">
+
+<section>
+  <h1 style="font-size:clamp(2rem,5vw,3.2rem)">Sessions</h1>
+  <p class="muted">Filter by type. Every session includes towels, a locker and tea.</p>
+  <div class="filters" role="group" aria-label="Filter sessions">
+    <button class="btn" data-filter="all" aria-pressed="true">All</button>
+    <button class="btn" data-filter="sauna" aria-pressed="false">Sauna</button>
+    <button class="btn" data-filter="plunge" aria-pressed="false">Plunge</button>
+    <button class="btn" data-filter="combo" aria-pressed="false">Combo</button>
+  </div>
+  <p id="count" class="muted" role="status" aria-live="polite">Showing 3 of 3 sessions</p>
+  <div class="grid" style="margin-top:1rem">
+    <article class="glass card" data-type="sauna"><h3>Dry Sauna</h3><p class="meta">60 min · 80°C · 6 guests</p><p>Quiet, dry heat. Best for first-timers.</p><span class="price">$28</span><a class="btn primary" href="book.html?session=Dry%20Sauna">Book Dry Sauna</a></article>
+    <article class="glass card" data-type="plunge"><h3>Cold Plunge</h3><p class="meta">45 min · 4–10°C · 4 guests</p><p>Short, guided cold exposure with staff on hand.</p><span class="price">$22</span><a class="btn primary" href="book.html?session=Cold%20Plunge">Book Cold Plunge</a></article>
+    <article class="glass card" data-type="combo"><h3>Heat &amp; Cold Circuit</h3><p class="meta">90 min · 6 guests</p><p>Our most popular option: three rounds, then rest.</p><span class="price">$45</span><a class="btn primary" href="book.html?session=Heat%20%26%20Cold%20Circuit">Book Circuit</a></article>
+  </div>
+</section>
+</main>
+<footer>© 2026 Harbor &amp; Haze Sauna Club · Demo site for HCI coursework</footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
